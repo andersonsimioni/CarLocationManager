@@ -83,6 +83,29 @@ public class CarBrand {
         return LuxuryLevel;
     }
 
+    public ArrayList<CarModel> getModels() {
+        return Models;
+    }
+
+    /**
+     * Build string of client information to
+     * display on screen or other device
+     * @return
+     */
+    public String getDisplayInfo(){
+        String info = "CarBrand{\n" +
+                      "   name: " + getName() + ",\n" +
+                      "   luxuryLevel: " + getLuxuryLevel() + ",\n" +
+                      "   Nationality: " + getNationality() + ",\n" +
+                      "   models: {\n";
+        for (CarModel model:Models)
+            info += model.getDisplayInfo() + ",";
+
+        info += "\n   }\n}";
+
+        return info;
+    }
+
     /**
      * Check if constructor information is valid
      */

@@ -3,6 +3,6 @@ package univali.andersonsimioni;
 public class Main {
 
     public static void main(String[] args) {
-	    univali.andersonsimioni.UnitTest.Client.test();
+	    univali.andersonsimioni.UnitTest.CarBrandTest.testAllFunctions();
     }
 }

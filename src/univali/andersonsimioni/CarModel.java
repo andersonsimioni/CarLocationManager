@@ -5,7 +5,7 @@ public class CarModel {
      * Depending on the type of vehicle,
      * its value may be higher
      */
-    enum Types{
+    public enum Types{
         Hatch (1),
         Sedan (3),
         SUV (6),
@@ -21,6 +21,7 @@ public class CarModel {
         }
     }
 
+    private final CarBrand Brand;
     private final String Name;
     private final int LuxuryLevel;
     private final int BuildYear;
@@ -37,6 +38,10 @@ public class CarModel {
         int points = this.LuxuryLevel * 4 + year * 3 + Type.getValue() * 2;
 
         return points;
+    }
+
+    public CarBrand getBrand() {
+        return Brand;
     }
 
     public String getName() {
@@ -60,9 +65,27 @@ public class CarModel {
     }
 
     /**
+     * Build string of client information to
+     * display on screen or other device
+     * @return
+     */
+    public String getDisplayInfo(){
+        return "CarModel{\n" +
+                "   brand: " + getBrand().getName() + ",\n" +
+                "   name: " + getName() + ",\n" +
+                "   luxuryLevel: " + getLuxuryLevel() + ",\n" +
+                "   buildYear: " + getBuildYear() + ",\n" +
+                "   modelYear: " + getModelYear() + ",\n" +
+                "   type: " + getType().toString() + ",\n" +
+                "}";
+    }
+
+    /**
      * Check if constructor information is valid
      */
-    private void validateInformation(String name, int luxuryLevel, int buildYear, int modelYear, Types type){
+    private void validateInformation(CarBrand brand, String name, int luxuryLevel, int buildYear, int modelYear, Types type){
+        if(brand == null)
+            throw new IllegalArgumentException("brand is null");
         if(name == null || name.isEmpty())
             throw new IllegalArgumentException("name is null or empty");
         if(luxuryLevel <= 0)
@@ -78,9 +101,10 @@ public class CarModel {
             throw new IllegalArgumentException("buildYear is bigger than modelYear");
     }
 
-    public CarModel(String name, int luxuryLevel, int buildYear, int modelYear, Types type) {
-        validateInformation(name, luxuryLevel, buildYear, modelYear, type);
+    public CarModel(CarBrand brand, String name, int luxuryLevel, int buildYear, int modelYear, Types type) {
+        validateInformation(brand, name, luxuryLevel, buildYear, modelYear, type);
 
+        this.Brand = brand;
         this.Name = name;
         this.LuxuryLevel = luxuryLevel;
         this.BuildYear = buildYear;

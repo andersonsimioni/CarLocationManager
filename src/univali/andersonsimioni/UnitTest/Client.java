@@ -4,7 +4,10 @@ import java.time.LocalDate;
 
 public class Client {
 
-    public static void test(){
+    /**
+     * Test all functions of Client class
+     */
+    public static void testAllFunctions(){
         univali.andersonsimioni.Client newClient = new univali.andersonsimioni.Client(
                         "48988550026",
                         "Anderson Simioni",
