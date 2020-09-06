@@ -33,7 +33,7 @@ public class CarBrand {
      */
     public CarModel getModel(String modelName, int modelYear){
         for (CarModel model:Models)
-            if(model.getName() == modelName && model.getModelYear() == modelYear)
+            if(model.getName().equals(modelName) && model.getModelYear() == modelYear)
                 return model;
 
         throw new IllegalArgumentException("Model not found");
@@ -48,7 +48,7 @@ public class CarBrand {
      */
     public boolean existCarModel(String modelName, int modelYear){
         for (CarModel _model:Models)
-            if(_model.getName() == modelName && _model.getModelYear() == modelYear)
+            if(_model.getName().equals(modelName) && _model.getModelYear() == modelYear)
                 return true;
 
         return false;
