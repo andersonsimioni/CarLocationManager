@@ -48,6 +48,22 @@ public class Car {
     }
 
     /**
+     * Build string of client information to
+     * display on screen or other device
+     * @return
+     */
+    public String getDisplayInfo(){
+        return "Car{\n" +
+                "   model: " + getModel().getDisplayInfo() + ",\n" +
+                "   board: " + getBoard() + ",\n" +
+                "   color: " + getColor() + ",\n" +
+                "   chassis: " + getChassis() + ",\n" +
+                "   renavam: " + getRenavam() + ",\n" +
+                "   mileage: " + getMileage() + "km,\n" +
+                "}";
+    }
+
+    /**
      * Updates the car's mileage,
      * however if the new mileage is less than the previous ones,
      * an IllegalArgumentException will be triggered

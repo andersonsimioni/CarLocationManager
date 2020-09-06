@@ -1,14 +1,15 @@
 package univali.andersonsimioni.UnitTest;
 
+import univali.andersonsimioni.Client;
 import java.time.LocalDate;
 
-public class Client {
+public class ClientTest {
 
     /**
      * Test all functions of Client class
      */
     public static void testAllFunctions(){
-        univali.andersonsimioni.Client newClient = new univali.andersonsimioni.Client(
+        Client newClient = new Client(
                         "48988550026",
                         "Anderson Simioni",
                         "00000000000",
