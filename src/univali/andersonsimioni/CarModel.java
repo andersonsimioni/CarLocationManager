@@ -21,11 +21,21 @@ public class CarModel {
         }
     }
 
+    public enum Fuels{
+        Flex,
+        Alcohol,
+        Gasoline,
+        Methanol,
+        NaturalGas,
+    }
+
     private final CarBrand Brand;
     private final String Name;
     private final int LuxuryLevel;
     private final int BuildYear;
     private final int ModelYear;
+    private final int NumberOfPorts;
+    private final Fuels Fuel;
     private final Types Type;
 
     /**
@@ -64,6 +74,14 @@ public class CarModel {
         return Type;
     }
 
+    public int getNumberOfPorts() {
+        return NumberOfPorts;
+    }
+
+    public Fuels getFuel() {
+        return Fuel;
+    }
+
     /**
      * Build string of client information to
      * display on screen or other device
@@ -77,13 +95,15 @@ public class CarModel {
                 "   buildYear: " + getBuildYear() + ",\n" +
                 "   modelYear: " + getModelYear() + ",\n" +
                 "   type: " + getType().toString() + ",\n" +
+                "   numberOfPorts: " + getNumberOfPorts() + ",\n" +
+                "   fuel: " + getFuel().toString() + ",\n" +
                 "}";
     }
 
     /**
      * Check if constructor information is valid
      */
-    private void validateInformation(CarBrand brand, String name, int luxuryLevel, int buildYear, int modelYear, Types type){
+    private void validateInformation(CarBrand brand, String name, int luxuryLevel, int buildYear, int modelYear, Types type, Fuels fuel, int numberOfPorts){
         if(brand == null)
             throw new IllegalArgumentException("brand is null");
         if(name == null || name.isEmpty())
@@ -96,13 +116,17 @@ public class CarModel {
             throw new IllegalArgumentException("modelYear is smaller than zero");
         if(type == null)
             throw new IllegalArgumentException("type is null");
+        if(fuel == null)
+            throw new IllegalArgumentException("fuel is null");
+        if(numberOfPorts <= 0)
+            throw new IllegalArgumentException("numberOfPorts is zero or smaller than zero");
 
         if(buildYear > modelYear)
             throw new IllegalArgumentException("buildYear is bigger than modelYear");
     }
 
-    public CarModel(CarBrand brand, String name, int luxuryLevel, int buildYear, int modelYear, Types type) {
-        validateInformation(brand, name, luxuryLevel, buildYear, modelYear, type);
+    public CarModel(CarBrand brand, String name, int luxuryLevel, int buildYear, int modelYear, Types type, Fuels fuel, int numberOfPorts) {
+        validateInformation(brand, name, luxuryLevel, buildYear, modelYear, type, fuel, numberOfPorts);
 
         this.Brand = brand;
         this.Name = name;
@@ -110,5 +134,7 @@ public class CarModel {
         this.BuildYear = buildYear;
         this.ModelYear = modelYear;
         this.Type = type;
+        this.Fuel = fuel;
+        this.NumberOfPorts = numberOfPorts;
     }
 }

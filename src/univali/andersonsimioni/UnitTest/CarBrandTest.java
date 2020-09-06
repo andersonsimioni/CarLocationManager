@@ -9,7 +9,7 @@ public class CarBrandTest {
      */
     public static void testAllFunctions(){
         CarBrand newBrand = new CarBrand("BMW", "Germany", 8);
-        CarModel newModelToRegister = new CarModel(newBrand, "M3", 12, 2015, 2016, CarModel.Types.Sport);
+        CarModel newModelToRegister = new CarModel(newBrand, "M3", 12, 2015, 2016, CarModel.Types.Sport, CarModel.Fuels.Flex, 4);
         newBrand.registerNewModel(newModelToRegister);
 
         System.out.println(newBrand.getDisplayInfo());
