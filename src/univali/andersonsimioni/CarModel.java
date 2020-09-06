@@ -1,5 +1,7 @@
 package univali.andersonsimioni;
 
+import java.time.LocalDate;
+
 public class CarModel {
     /**
      * Depending on the type of vehicle,
@@ -44,8 +46,11 @@ public class CarModel {
      * @return
      */
     public int calculateAppreciationPoints(){
-        int year = (this.ModelYear - 2000);
-        int points = this.LuxuryLevel * 4 + year * 3 + Type.getValue() * 2;
+        int nowYear = LocalDate.now().getYear();
+
+        float year = 1f / (nowYear == this.ModelYear ? (0.5f) : (nowYear - this.ModelYear));
+        year *= 15;
+        int points = this.LuxuryLevel * 4 + (int)year + Type.getValue() * 2;
 
         return points;
     }

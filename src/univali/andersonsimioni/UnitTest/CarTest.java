@@ -10,7 +10,7 @@ public class CarTest {
      */
     public static void testAllFunctions(){
         CarBrand brand = new CarBrand("Nissan", "Japan", 1);
-        CarModel model = new CarModel(brand, "March S", 1, 2015,2016, CarModel.Types.Hatch, CarModel.Fuels.Flex, 5);
+        CarModel model = new CarModel(brand, "March S", 1, 2015,2017, CarModel.Types.Hatch, CarModel.Fuels.Flex, 5);
         brand.registerNewModel(model);
         Car newLocationCar = new Car(model, "MFW-7033", "Graphit", "A254SDCASD", "164549616161", 90000);
 
