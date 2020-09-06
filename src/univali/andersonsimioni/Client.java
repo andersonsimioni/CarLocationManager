@@ -10,12 +10,12 @@ import java.time.LocalDate;
  * the company will also be able to register and update a client
  */
 public class Client {
-    private String Phone;
+    private String Phone; //Contact phone number
     private String Name;
+    private LocalDate Birth;
     private final String Cpf;
-    private final LocalDate Birth;
-    private LocalDate UpdateInfoDate;
-    private final LocalDate RegisterDate;
+    private LocalDate UpdateInfoDate; //Date of last update client information
+    private final LocalDate RegisterDate; //Date of client registration in "Car Location Service"
 
     public String getName() {
         return Name;
@@ -33,9 +33,8 @@ public class Client {
         return RegisterDate;
     }
 
-
     /**
-     * Check if constructor params is valid,
+     * Check if constructor and update params is valid,
      * if not throw argument exception
      */
     private void ValidateInformation(String phone, String name, String cpf, LocalDate birth){
@@ -54,6 +53,18 @@ public class Client {
             throw new IllegalArgumentException("Invalid birth, date is bigger than now");
         if(yearValidation >= 150)
             throw new IllegalArgumentException("Possible age cheat... is bigger than 150 years..");
+    }
+
+    /**
+     * Update client informations
+     */
+    public void Update(String phone, String name, LocalDate birth){
+        ValidateInformation(phone, name, "NO NEED CPF", birth);
+
+        this.Phone = phone;
+        this.Name = name;
+        this.Birth = birth;
+        this.UpdateInfoDate = LocalDate.now();
     }
 
     public Client(String phone, String name, String cpf, LocalDate birth) {
