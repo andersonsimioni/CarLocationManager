@@ -1,15 +1,15 @@
 package univali.andersonsimioni;
 
 public class Car {
+    private int Mileage;
     private final CarModel Model;
     private final String Board;
     private final String Color;
     private final String Chassis;
     private final String Renavam;
-    private int Mileage;
 
     /**
-     * Calculate Alocation price and return in float value
+     * Calculate ALlocation price and return in float value
      * @param basePrice
      * @return
      */

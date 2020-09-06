@@ -3,10 +3,12 @@ package univali.andersonsimioni;
 import java.util.ArrayList;
 
 public class CarBrand {
+    //region VARIABLES
     private final String Name;
     private final String Nationality;
     private final int LuxuryLevel;
     private final ArrayList<CarModel> Models;
+    //endregion
 
     /**
      * Register new car model in array list of models,
@@ -16,7 +18,6 @@ public class CarBrand {
     public void registerNewModel(CarModel model){
         if(model == null)
             throw new IllegalArgumentException("model is null");
-
         if(existCarModel(model.getName(), model.getModelYear()))
             throw new IllegalArgumentException("Car model already exist");
 

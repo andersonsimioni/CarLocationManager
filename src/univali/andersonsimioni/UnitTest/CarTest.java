@@ -12,12 +12,12 @@ public class CarTest {
         CarBrand brand = new CarBrand("Nissan", "Japan", 1);
         CarModel model = new CarModel(brand, "March S", 1, 2015,2017, CarModel.Types.Hatch, CarModel.Fuels.Flex, 5);
         brand.registerNewModel(model);
-        Car newAlocationCar = new Car(model, "MFW-7033", "Graphit", "A254SDCASD", "164549616161", 90000);
+        Car newALlocationCar = new Car(model, "MFW-7033", "Graphit", "A254SDCASD", "164549616161", 90000);
 
-        System.out.println(newAlocationCar.getDisplayInfo());
+        System.out.println(newALlocationCar.getDisplayInfo());
 
-        System.out.println("Simulating Alocation price calculation.. base price used: 1.12");
-        float price = newAlocationCar.calculateDailyPrice(1.12f);
-        System.out.println("Price for " + newAlocationCar.getFullNameInformation() + ": U$" + price + " per day");
+        System.out.println("Simulating ALlocation price calculation.. base price used: 1.12");
+        float price = newALlocationCar.calculateDailyPrice(1.12f);
+        System.out.println("Price for " + newALlocationCar.getFullNameInformation() + ": U$" + price + " per day");
     }
 }

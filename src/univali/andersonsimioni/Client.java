@@ -13,7 +13,7 @@ public class Client {
     private LocalDate Birth;
     private final String Cpf;
     private LocalDate UpdateInfoDate; //Date of last update client information
-    private final LocalDate RegisterDate; //Date of client registration in "Car Alocation Service"
+    private final LocalDate RegisterDate; //Date of client registration in "Car ALlocation Service"
 
     public String getName() {
         return Name;
