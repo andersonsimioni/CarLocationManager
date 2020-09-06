@@ -48,6 +48,14 @@ public class Car {
     }
 
     /**
+     * Return name and model year of car
+     * @return
+     */
+    public String getFullNameInformation(){
+        return this.Model.getName() + " " + this.Model.getModelYear();
+    }
+
+    /**
      * Build string of client information to
      * display on screen or other device
      * @return

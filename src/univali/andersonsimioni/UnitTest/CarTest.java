@@ -18,7 +18,6 @@ public class CarTest {
 
         System.out.println("Simulating location price calculation.. base price used: 1.12");
         float price = newLocationCar.calculateDailyPrice(1.12f);
-        String carCompleteName = newLocationCar.getModel().getName() + " " + newLocationCar.getModel().getModelYear();
-        System.out.println("Price for " + carCompleteName + ": U$" + price + " per day");
+        System.out.println("Price for " + newLocationCar.getFullNameInformation() + ": U$" + price + " per day");
     }
 }
