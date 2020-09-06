@@ -78,7 +78,7 @@ public class Client {
     }
 
     /**
-     * Update client informations
+     * Update client information
      */
     public void update(String phone, String name, LocalDate birth){
         validateInformation(phone, name, "NO NEED CPF", birth);
@@ -91,10 +91,10 @@ public class Client {
 
     public Client(String phone, String name, String cpf, LocalDate birth) {
         validateInformation(phone, name, cpf, birth);
-        Phone = phone;
-        Name = name;
-        Cpf = cpf;
-        Birth = birth;
+        this.Phone = phone;
+        this.Name = name;
+        this.Cpf = cpf;
+        this.Birth = birth;
 
         this.RegisterDate = LocalDate.now();
         this.UpdateInfoDate = LocalDate.now();
