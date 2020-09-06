@@ -1,7 +1,5 @@
 package univali.andersonsimioni;
 
-import jdk.jfr.Timespan;
-
 import java.time.LocalDate;
 
 /**
@@ -29,15 +27,39 @@ public class Client {
         return Birth;
     }
 
+    public String getPhone() {
+        return Phone;
+    }
+
+    public LocalDate getUpdateInfoDate() {
+        return UpdateInfoDate;
+    }
+
     public LocalDate getRegisterDate() {
         return RegisterDate;
+    }
+
+    /**
+     * Build string of client information to
+     * display on screen or other device
+     * @return
+     */
+    public String getDisplayInfo(){
+        return "Client{\n" +
+                "   name: " + getName() + ",\n" +
+                "   CPF: " + getCpf() + ",\n" +
+                "   birth: " + getBirth().toString() + ",\n" +
+                "   phone: " + getPhone() + ",\n" +
+                "   register: " + getRegisterDate() + ",\n" +
+                "   update info: " + getUpdateInfoDate().toString() +
+                "\n}";
     }
 
     /**
      * Check if constructor and update params is valid,
      * if not throw argument exception
      */
-    private void ValidateInformation(String phone, String name, String cpf, LocalDate birth){
+    private void validateInformation(String phone, String name, String cpf, LocalDate birth){
         if(phone == null || phone.isEmpty())
             throw new IllegalArgumentException("phone is null or empty");
         if(name == null || name.isEmpty())
@@ -58,8 +80,8 @@ public class Client {
     /**
      * Update client informations
      */
-    public void Update(String phone, String name, LocalDate birth){
-        ValidateInformation(phone, name, "NO NEED CPF", birth);
+    public void update(String phone, String name, LocalDate birth){
+        validateInformation(phone, name, "NO NEED CPF", birth);
 
         this.Phone = phone;
         this.Name = name;
@@ -68,7 +90,7 @@ public class Client {
     }
 
     public Client(String phone, String name, String cpf, LocalDate birth) {
-        ValidateInformation(phone, name, cpf, birth);
+        validateInformation(phone, name, cpf, birth);
         Phone = phone;
         Name = name;
         Cpf = cpf;
