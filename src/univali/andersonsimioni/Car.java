@@ -9,7 +9,7 @@ public class Car {
     private int Mileage;
 
     /**
-     * Calculate location price and return in float value
+     * Calculate Alocation price and return in float value
      * @param basePrice
      * @return
      */
