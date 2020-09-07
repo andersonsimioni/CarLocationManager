@@ -7,9 +7,15 @@ public class Car {
     private final String Color;
     private final String Chassis;
     private final String Renavam;
+    private availableStatus Status;
+
+    public enum availableStatus{
+        Unallocated,
+        Allocated,
+    }
 
     /**
-     * Calculate ALlocation price and return in float value
+     * Calculate Allocation price and return in float value
      * @param basePrice
      * @return
      */
@@ -22,6 +28,10 @@ public class Car {
 
         return value;
     }
+
+    public String getStatus(){ return Status.name(); }
+
+    public void setStatus(availableStatus status) { Status = status; }
 
     public CarModel getModel() {
         return Model;
@@ -62,6 +72,7 @@ public class Car {
      */
     public String getDisplayInfo(){
         return "Car{\n" +
+                "   status: " + getStatus() + "\n" +
                 "   model: " + getModel().getDisplayInfo() + ",\n" +
                 "   board: " + getBoard() + ",\n" +
                 "   color: " + getColor() + ",\n" +
@@ -115,5 +126,6 @@ public class Car {
         Chassis = chassis;
         Renavam = renavam;
         Mileage = mileage;
+        Status = availableStatus.Unallocated;
     }
 }
