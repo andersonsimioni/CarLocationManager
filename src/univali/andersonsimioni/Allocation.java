@@ -27,7 +27,7 @@ public class Allocation {
         if(car == null)
             throw new IllegalArgumentException("Car is null");
 
-        if(car.getStatus() == "Allocated")
+        if(car.getStatus().equals("Allocated"))
             throw new IllegalArgumentException("Car already allocated");
 
         if(client == null)
