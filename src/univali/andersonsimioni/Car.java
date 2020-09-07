@@ -7,9 +7,9 @@ public class Car {
     private final String Color;
     private final String Chassis;
     private final String Renavam;
-    private availableStatus Status;
+    private AvailableStatus Status;
 
-    public enum availableStatus{
+    public enum AvailableStatus{
         Unallocated,
         Allocated,
     }
@@ -31,7 +31,7 @@ public class Car {
 
     public String getStatus(){ return Status.name(); }
 
-    public void setStatus(availableStatus status) { Status = status; }
+    public void setStatus(AvailableStatus status) { Status = status; }
 
     public CarModel getModel() {
         return Model;
@@ -126,6 +126,6 @@ public class Car {
         Chassis = chassis;
         Renavam = renavam;
         Mileage = mileage;
-        Status = availableStatus.Unallocated;
+        Status = AvailableStatus.Unallocated;
     }
 }
