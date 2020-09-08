@@ -1,5 +1,6 @@
 package univali.andersonsimioni;
 
+import java.time.LocalDate;
 import java.util.ArrayList;
 
 public class CarAllocationService {
@@ -13,6 +14,20 @@ public class CarAllocationService {
     //endregion
 
     /**
+     * Find client registration class instance by cpf,
+     * if not found throw IllegalArgumentExcpetion
+     * @param cpf
+     * @return
+     */
+    private Client findClient(String cpf){
+        for(Client client:Clients)
+            if(client.getCpf().equals(cpf))
+                return client;
+
+        throw new IllegalArgumentException("Client not found");
+    }
+
+    /**
      * Find available cars by brandName, modelName and modelYear to allocate,
      * if not found throw IllegalArgumentException
      * @param brandName
@@ -20,7 +35,7 @@ public class CarAllocationService {
      * @param modelYear
      * @return
      */
-    private Car findCarToAllocate(String brandName, String modelName, int modelYear){
+    public Car findCarToAllocate(String brandName, String modelName, int modelYear){
         for(Car car:FleetOfCars)
             if(car.getModel().getName().equals(modelName) &&
                car.getModel().getModelYear() == modelYear &&
@@ -29,6 +44,20 @@ public class CarAllocationService {
                 return car;
 
         throw new IllegalArgumentException("No cars available for allocation");
+    }
+
+    /**
+     * Return a list of cars brand, model and year in string
+     * @return
+     */
+    public String getAvailableCarsList(){
+        String list = "";
+
+        for (Car car:FleetOfCars)
+            if(carIsAvailable(car))
+                list += car.getModel().getBrand().getName() + " " + car.getModel().getName() + " " + car.getModel().getModelYear() + "\n";
+
+        return list;
     }
 
     /**
@@ -41,11 +70,11 @@ public class CarAllocationService {
         if(car == null)
             throw new IllegalArgumentException("car is null");
 
-        for(AllocationOfCar aLlocation:ALlocations)
-            if(aLlocation.getCar().getRenavam().equals(car.getRenavam()) &&
-               aLlocation.getCar().getChassis().equals(car.getChassis()) &&
-               aLlocation.getCar().getBoard().equals(car.getBoard()) &&
-               aLlocation.isReturned() == false)
+        for(AllocationOfCar allocation:ALlocations)
+            if(allocation.getCar().getRenavam().equals(car.getRenavam()) &&
+               allocation.getCar().getChassis().equals(car.getChassis()) &&
+               allocation.getCar().getBoard().equals(car.getBoard()) &&
+               allocation.isReturned() == false)
                 return false;
 
         return true;
@@ -146,6 +175,41 @@ public class CarAllocationService {
     }
 
     /**
+     * Check if client have open allocation yet
+     * @param client
+     * @return
+     */
+    private boolean clientHaveOpenAllocation(Client client){
+        if(client == null)
+            throw new IllegalArgumentException("invalid client, client is null");
+
+        for(AllocationOfCar allocation:ALlocations)
+            if(allocation.isReturned() == false)
+                if(allocation.getClient().getCpf().equals(client.getCpf()))
+                    return true;
+
+        return false;
+    }
+
+    /**
+     * Find open car allocation of client,
+     * if not found throw IllegalArgumentException
+     * @param clientCpf
+     * @return
+     */
+    private AllocationOfCar findClientOpenAllocationOfCar(String clientCpf){
+        if(clientCpf == null || clientCpf.isEmpty())
+            throw new IllegalArgumentException("invalid client cpf");
+
+        for(AllocationOfCar allocation:ALlocations)
+            if(allocation.isReturned() == false)
+                if(allocation.getClient().getCpf().equals(clientCpf))
+                    return allocation;
+
+        throw new IllegalArgumentException("Allocation of client not found");
+    }
+
+    /**
      * Register client if not exist other client
      * with equal CPF, if exist throw IllegalArgumentException
      * @param client
@@ -181,7 +245,7 @@ public class CarAllocationService {
      * @param newCarModel
      */
     public void registerCarModel(String brandName, CarModel newCarModel){
-        if(carBrandExist(brandName))
+        if(carBrandExist(brandName) == false)
             throw new IllegalArgumentException(brandName + " Car brand does not exist");
         if(newCarModel == null)
             throw new IllegalArgumentException("newCarModel is null");
@@ -207,13 +271,75 @@ public class CarAllocationService {
     }
 
     /**
-     * Find car and allocate
-     * @param brandName
-     * @param modelName
-     * @param modelYear
+     * Return simulating price of allocation
+     * @return
      */
-    public void allocateCar(String clientCpf, String brandName, String modelName, int modelYear){
+    public float calculateAllocationPrice(String clientCpf, Car allocateCar, long allocationDays, int tripDistanceKm){
+        if(allocateCar == null)
+            throw new IllegalArgumentException("please insert valid allocate car");
+        if(carIsAvailable(allocateCar) == false)
+            throw new IllegalArgumentException("Car is not available");
+        if(clientExist(clientCpf) == false)
+            throw new IllegalArgumentException("Client not found");
+        if(allocationDays <= 0)
+            throw new IllegalArgumentException("allocationDays is equal or smaller than zero");
+        if(tripDistanceKm <= 0)
+            throw new IllegalArgumentException("tripDistanceKm is equal or smaller than zero");
 
+        Client client = findClient(clientCpf);
+        LocalDate returnDate = LocalDate.now().plusDays(allocationDays);
+        AllocationOfCar newAllocation = new AllocationOfCar(allocateCar, client, returnDate, tripDistanceKm, 0,this);
+
+        return newAllocation.calculateEstimatedValue();
+    }
+
+    /**
+     * Find client by cpf and car by brand, model and year,
+     * if not found anything throw exception
+     * @param clientCpf
+     * @param allocateCar
+     */
+    public void allocateCar(String clientCpf, Car allocateCar, long allocationDays, int tripDistanceKm, float deposit){
+        if(clientCpf == null || clientCpf.isEmpty())
+            throw new IllegalArgumentException("client cpf is null or empty");
+        if(allocateCar == null)
+            throw new IllegalArgumentException("please insert valid allocate car");
+
+        try {
+            Client client = findClient(clientCpf);
+            if(clientHaveOpenAllocation(client))
+                throw new IllegalArgumentException("The customer still owns a rented vehicle");
+            if(carIsAvailable(allocateCar) == false)
+                throw new IllegalArgumentException("Car is not available");
+
+            LocalDate returnDate = LocalDate.now().plusDays(allocationDays);
+            AllocationOfCar newAllocation = new AllocationOfCar(allocateCar, client, returnDate, tripDistanceKm, deposit,this);
+
+            float minimumDeposit = newAllocation.calculateEstimatedValue();
+            if(deposit <= minimumDeposit)
+                throw new IllegalArgumentException("fail to register allocation, minimum deposit is: U$" + minimumDeposit);
+
+            ALlocations.add(newAllocation);
+        }catch (IllegalArgumentException ex){
+            throw ex;
+        }
+    }
+
+    /**
+     * Closes the allocation of the customer's current car
+     * and informs him of the amount to be paid corresponding
+     * to the days he spent with the vehicle
+     * @param clientCpf
+     * @return payment and allocation status message to client
+     */
+    public String returnCar(String clientCpf, long allocationDurationDays){
+        if(clientExist(clientCpf) == false)
+            throw new IllegalArgumentException("client not found");
+        if(allocationDurationDays <= 0)
+            throw new IllegalArgumentException("allocationDurationDays is equal or smaller than zero");
+
+        AllocationOfCar allocation = findClientOpenAllocationOfCar(clientCpf);
+        return allocation.returnCar(allocationDurationDays);
     }
 
     public String getName() {

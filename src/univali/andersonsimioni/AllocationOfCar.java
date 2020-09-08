@@ -2,6 +2,8 @@ package univali.andersonsimioni;
 
 import java.time.Duration;
 import java.time.LocalDate;
+import java.time.LocalDateTime;
+import java.time.Period;
 
 public class AllocationOfCar {
     //region VARIABLES
@@ -55,12 +57,67 @@ public class AllocationOfCar {
     //endregion
 
     /**
+     * Finalizes the allocation of the vehicle and returns
+     * the message of the allocation payment status
+     * @param allocationDurationDays
+     * @return
+     */
+    public String returnCar(long allocationDurationDays){
+        if(this.Returned)
+            throw new IllegalArgumentException("The vehicle had already returned and the allocation ended");
+        if(allocationDurationDays <= 0)
+            throw new IllegalArgumentException("allocationDurationDays is equal or smaller than zero");
+
+        float realPrice = this.calculateValue(allocationDurationDays);
+        float estimatedPrice = this.calculateEstimatedValue();
+        float returnedValue = (estimatedPrice - realPrice);
+        float penalty = this.calculatePenalty(allocationDurationDays);
+        long estimatedDays = this.calculateDurationDays();
+
+        this.Returned = true;
+        this.ReturnedDate = LocalDate.now();
+
+        if(allocationDurationDays > estimatedDays)
+            return "price for allocation is U$"+realPrice+", the customer suffered a penalty of U$"+penalty+" for exceeding the return date";
+
+        if(allocationDurationDays < estimatedDays)
+            return  "price for allocation is U$" + realPrice + ", vehicle returned before the estimated date, value returned: U$" + returnedValue;
+
+        return "price for allocation is U$" + realPrice + ", client ";
+    }
+
+    /**
+     * calculate allocation total duration days
+     * @return
+     */
+    public long calculateDurationDays(){
+        Period duration = Period.between(this.StartDate, this.ReturnDate);
+        return duration.getDays();
+    }
+
+    /**
+     * calculate penalty value to client pay
+     * @param durationDays
+     * @return
+     */
+    public float calculatePenalty(float durationDays){
+        Long normalDuration = (long)Period.between(this.StartDate, this.ReturnDate).getDays();
+        if(durationDays > normalDuration)
+        {
+            float penalty = (float)(durationDays - normalDuration) * 0.10f;
+            return penalty;
+        }
+
+        return  0f;
+    }
+
+    /**
      * Calculate price of allocation corresponding by days
      * @param days
      * @return
      */
-    private float calculateValue(long days){
-        Long normalDuration = Duration.between(this.StartDate, this.ReturnDate).toDays();
+    public float calculateValue(long days){
+        Long normalDuration = (long)Period.between(this.StartDate, this.ReturnDate).getDays();
 
         float basePrice = this.CarAllocationService.getBasePrice();
         float dayPrice = this.Car.calculateDailyPrice(basePrice);
@@ -73,11 +130,7 @@ public class AllocationOfCar {
 
         //If the customer delivers the car after the agreed date,
         // it will be penalized with 10% per day
-        if(days > normalDuration)
-        {
-            float penalty = (float)(days - normalDuration) * 0.10f;
-            totalPrice += penalty;
-        }
+        totalPrice += calculatePenalty(days);
 
         return totalPrice;
     }
@@ -86,9 +139,9 @@ public class AllocationOfCar {
      * Calculates the rental price based on the scheduled day for the car's return
      * @return
      */
-    private float calculateEstimatedValue(){
-        Duration duration = Duration.between(this.StartDate, this.ReturnDate);
-        long days = duration.toDays();
+    public float calculateEstimatedValue(){
+        Period duration = Period.between(this.StartDate, this.ReturnDate);
+        long days = duration.getDays();
         float price = calculateValue(days);
 
         return price;
@@ -108,11 +161,11 @@ public class AllocationOfCar {
             throw new IllegalArgumentException("returnDate is null");
         if(tripDistanceKm <= 0)
             throw new IllegalArgumentException("tripDistance is equal or smaller than zero");
-        if(deposit <= 0)
-            throw new IllegalArgumentException("deposit is equal or smaller than zero");
+        if(deposit < 0)
+            throw new IllegalArgumentException("deposit is smaller than zero");
 
-        Duration duration = Duration.between(LocalDate.now(), returnDate);
-        if(duration.getSeconds() <= 0)
+        Period duration = Period.between(LocalDate.now(), returnDate);
+        if(duration.getDays() <= 0)
             throw new IllegalArgumentException("Invalid returnDate");
     }
 
@@ -127,9 +180,5 @@ public class AllocationOfCar {
         this.CarAllocationService = carALlocationService;
         this.Returned = false;
         this.TripDistanceKm = tripDistanceKm;
-
-        float estimated = calculateEstimatedValue();
-        if(estimated >= deposit)
-            throw new IllegalArgumentException("Deposit value must be greater than U$" + estimated + "");
     }
 }

@@ -8,7 +8,7 @@ public class UseSimulation {
     public static void run(){
         /* sources */
         Client client1 = new Client("48988550026", "Anderson Simioni", "00000000000", LocalDate.parse("2000-05-02"));
-        Client client2 = new Client( "48998484398", "Willian de Souza", "00000000000", LocalDate.parse("2001-12-27"));
+        Client client2 = new Client( "48998484398", "Willian de Souza", "11111111111", LocalDate.parse("2001-12-27"));
 
         CarBrand brand = new CarBrand( "Volkswagen", "German", 1);
         CarModel model1 = new CarModel(brand, "Gol", 1, 2015, 2017, CarModel.Types.Hatch, CarModel.Fuels.Flex, 2);
@@ -41,7 +41,5 @@ public class UseSimulation {
         allocation.unallocate();
         System.out.println(allocation.getNote());
         System.out.println("Success!");
-
-
     }
 }
