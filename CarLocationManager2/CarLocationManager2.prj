@@ -1,6 +1,6 @@
 format 222
 "CarLocationManager2"
-  revision 1
+  revision 2
   modified_by 2 "bit"
 
 
@@ -65,6 +65,234 @@ format 222
     activitydiagramsettings
      end
     classdiagram 128002 "Car"
+      classdiagramsettings member_max_width 0 end
+      size A4
+    end
+
+    class 128130 "CarBrand"
+      visibility package 
+      cpp_decl ""
+      java_decl "${comment}${@}${visibility}${static}${final}${abstract}class ${name}${extends}${implements} {
+${members}}
+"
+      php_decl ""
+      python_2_2 python_decl ""
+      idl_decl ""
+      explicit_switch_type ""
+      mysql_decl ""
+      
+      attribute 129026 "Name"
+	private explicit_type ""
+	stereotype "string"
+	cpp_decl ""
+	java_decl "  ${comment}${@}${visibility}${static}${final}${transient}${volatile}${type} ${name}${value};
+"
+	php_decl ""
+	python_decl ""
+	idl_decl ""
+	mysql_decl ""
+	MysqlColumn
+      end
+
+      attribute 129154 "Nationality"
+	private explicit_type ""
+	stereotype "string"
+	cpp_decl ""
+	java_decl "  ${comment}${@}${visibility}${static}${final}${transient}${volatile}${type} ${name}${value};
+"
+	php_decl ""
+	python_decl ""
+	idl_decl ""
+	mysql_decl ""
+	MysqlColumn
+      end
+
+      attribute 129282 "LuxuryLevel"
+	private explicit_type ""
+	stereotype "string"
+	cpp_decl ""
+	java_decl "  ${comment}${@}${visibility}${static}${final}${transient}${volatile}${type} ${name}${value};
+"
+	php_decl ""
+	python_decl ""
+	idl_decl ""
+	mysql_decl ""
+	MysqlColumn
+      end
+
+      attribute 129410 "Models"
+	private explicit_type ""
+	stereotype "ArrayList<CarModel>"
+	cpp_decl ""
+	java_decl "  ${comment}${@}${visibility}${static}${final}${transient}${volatile}${type} ${name}${value};
+"
+	php_decl ""
+	python_decl ""
+	idl_decl ""
+	mysql_decl ""
+	MysqlColumn
+      end
+
+      operation 129794 "registerNewModel"
+	stereotype "void"
+	public explicit_return_type ""
+	nparams 1
+	  param in name "model" explicit_type "CarModel"
+	nexceptions 1
+	  explicit_exception "IllegalArgumentException"
+	
+	java_def "  ${comment}${@}${visibility}${final}${static}${abstract}${synchronized}${type} ${name}${(}${t0} ${p0}${)}${throws}${staticnl}{
+  ${body}}
+"
+	
+	
+	
+      end
+
+      operation 129922 "getModel"
+	stereotype "string"
+	public explicit_return_type ""
+	nparams 2
+	  param in name "modelName" explicit_type "string"
+	  param in name "modelYear" explicit_type "int"
+	
+	java_def "  ${comment}${@}${visibility}${final}${static}${abstract}${synchronized}${type} ${name}${(}${t0} ${p0}, ${t1} ${p1}${)}${throws}${staticnl}{
+  ${body}}
+"
+	
+	
+	
+      end
+
+      operation 130050 "existCarModel"
+	stereotype "boolean"
+	public explicit_return_type ""
+	nparams 2
+	  param in name "modelName" explicit_type "string"
+	  param in name "modelYear" explicit_type "int"
+	
+	java_def "  ${comment}${@}${visibility}${final}${static}${abstract}${synchronized}${type} ${name}${(}${t0} ${p0}, ${t1} ${p1}${)}${throws}${staticnl}{
+  ${body}}
+"
+	
+	
+	
+      end
+
+      operation 130178 "calculateAppreciationPoints"
+	stereotype "int"
+	public explicit_return_type ""
+	nparams 2
+	  param in name "modelName" explicit_type "string"
+	  param in name "modelYear" explicit_type "int"
+	
+	java_def "  ${comment}${@}${visibility}${final}${static}${abstract}${synchronized}${type} ${name}${(}${t0} ${p0}, ${t1} ${p1}${)}${throws}${staticnl}{
+  ${body}}
+"
+	
+	
+	
+      end
+
+      operation 130306 "getName"
+	stereotype "string"
+	public explicit_return_type ""
+	nparams 0
+	
+	java_def "  ${comment}${@}${visibility}${final}${static}${abstract}${synchronized}${type} ${name}${(}${)}${throws}${staticnl}{
+  ${body}}
+"
+	
+	
+	
+      end
+
+      operation 130434 "getNationality"
+	stereotype "string"
+	public explicit_return_type ""
+	nparams 0
+	
+	java_def "  ${comment}${@}${visibility}${final}${static}${abstract}${synchronized}${type} ${name}${(}${)}${throws}${staticnl}{
+  ${body}}
+"
+	
+	
+	
+      end
+
+      operation 130562 "getLuxuryLevel"
+	stereotype "int"
+	public explicit_return_type ""
+	nparams 0
+	
+	java_def "  ${comment}${@}${visibility}${final}${static}${abstract}${synchronized}${type} ${name}${(}${)}${throws}${staticnl}{
+  ${body}}
+"
+	
+	
+	
+      end
+
+      operation 130690 "getModels"
+	stereotype "ArrayList<CarModel>"
+	public explicit_return_type ""
+	nparams 0
+	
+	java_def "  ${comment}${@}${visibility}${final}${static}${abstract}${synchronized}${type} ${name}${(}${)}${throws}${staticnl}{
+  ${body}}
+"
+	
+	
+	
+      end
+
+      operation 130818 "getDisplayInfo"
+	stereotype "String"
+	public explicit_return_type ""
+	nparams 0
+	
+	java_def "  ${comment}${@}${visibility}${final}${static}${abstract}${synchronized}${type} ${name}${(}${)}${throws}${staticnl}{
+  ${body}}
+"
+	
+	
+	
+      end
+
+      operation 130946 "validateInformation"
+	stereotype "void"
+	public explicit_return_type ""
+	nparams 3
+	  param in name "name" explicit_type "string"
+	  param in name "nationality" explicit_type "string"
+	  param in name "luxuryLevel" explicit_type "int"
+	
+	java_def "  ${comment}${@}${visibility}${final}${static}${abstract}${synchronized}${type} ${name}${(}${t0} ${p0}, ${t1} ${p1}, ${t2} ${p2}${)}${throws}${staticnl}{
+  ${body}}
+"
+	
+	
+	
+      end
+
+      operation 131074 "CarBrand"
+	stereotype "CarBrand"
+	public explicit_return_type ""
+	nparams 3
+	  param in name "name" explicit_type "string"
+	  param in name "nationality" explicit_type "string"
+	  param in name "luxuryLevel" explicit_type "int"
+	
+	java_def "  ${comment}${@}${visibility}${final}${synchronized}${name}${(}${t0} ${p0}, ${t1} ${p1}, ${t2} ${p2}${)}${throws} {
+  ${body}}
+"
+	
+	
+	
+      end
+    end
+
+    classdiagram 128130 "CarBrand"
       classdiagramsettings member_max_width 0 end
       size A4
     end
@@ -348,233 +576,19 @@ ${members}}
 	
 	
       end
-    end
 
-    classdiagram 128130 "CarBrand"
-      classdiagramsettings member_max_width 0 end
-      size A4
-    end
-
-    class 128130 "CarBrand"
-      visibility package 
-      cpp_decl ""
-      java_decl "${comment}${@}${visibility}${static}${final}${abstract}class ${name}${extends}${implements} {
-${members}}
-"
-      php_decl ""
-      python_2_2 python_decl ""
-      idl_decl ""
-      explicit_switch_type ""
-      mysql_decl ""
-      
-      attribute 129026 "Name"
-	private explicit_type ""
-	stereotype "string"
-	cpp_decl ""
-	java_decl "  ${comment}${@}${visibility}${static}${final}${transient}${volatile}${type} ${name}${value};
-"
-	php_decl ""
-	python_decl ""
-	idl_decl ""
-	mysql_decl ""
-	MysqlColumn
+      classrelation 128258 // <dependency>
+	relation 128258 -_->
+	  a public
+	    classrelation_ref 128258 // <dependency>
+	  b parent class_ref 128130 // CarBrand
       end
 
-      attribute 129154 "Nationality"
-	private explicit_type ""
-	stereotype "string"
-	cpp_decl ""
-	java_decl "  ${comment}${@}${visibility}${static}${final}${transient}${volatile}${type} ${name}${value};
-"
-	php_decl ""
-	python_decl ""
-	idl_decl ""
-	mysql_decl ""
-	MysqlColumn
-      end
-
-      attribute 129282 "LuxuryLevel"
-	private explicit_type ""
-	stereotype "string"
-	cpp_decl ""
-	java_decl "  ${comment}${@}${visibility}${static}${final}${transient}${volatile}${type} ${name}${value};
-"
-	php_decl ""
-	python_decl ""
-	idl_decl ""
-	mysql_decl ""
-	MysqlColumn
-      end
-
-      attribute 129410 "Models"
-	private explicit_type ""
-	stereotype "ArrayList<CarModel>"
-	cpp_decl ""
-	java_decl "  ${comment}${@}${visibility}${static}${final}${transient}${volatile}${type} ${name}${value};
-"
-	php_decl ""
-	python_decl ""
-	idl_decl ""
-	mysql_decl ""
-	MysqlColumn
-      end
-
-      operation 129794 "registerNewModel"
-	stereotype "void"
-	public explicit_return_type ""
-	nparams 1
-	  param in name "model" explicit_type "CarModel"
-	nexceptions 1
-	  explicit_exception "IllegalArgumentException"
-	
-	java_def "  ${comment}${@}${visibility}${final}${static}${abstract}${synchronized}${type} ${name}${(}${t0} ${p0}${)}${throws}${staticnl}{
-  ${body}}
-"
-	
-	
-	
-      end
-
-      operation 129922 "getModel"
-	stereotype "string"
-	public explicit_return_type ""
-	nparams 2
-	  param in name "modelName" explicit_type "string"
-	  param in name "modelYear" explicit_type "int"
-	
-	java_def "  ${comment}${@}${visibility}${final}${static}${abstract}${synchronized}${type} ${name}${(}${t0} ${p0}, ${t1} ${p1}${)}${throws}${staticnl}{
-  ${body}}
-"
-	
-	
-	
-      end
-
-      operation 130050 "existCarModel"
-	stereotype "boolean"
-	public explicit_return_type ""
-	nparams 2
-	  param in name "modelName" explicit_type "string"
-	  param in name "modelYear" explicit_type "int"
-	
-	java_def "  ${comment}${@}${visibility}${final}${static}${abstract}${synchronized}${type} ${name}${(}${t0} ${p0}, ${t1} ${p1}${)}${throws}${staticnl}{
-  ${body}}
-"
-	
-	
-	
-      end
-
-      operation 130178 "calculateAppreciationPoints"
-	stereotype "int"
-	public explicit_return_type ""
-	nparams 2
-	  param in name "modelName" explicit_type "string"
-	  param in name "modelYear" explicit_type "int"
-	
-	java_def "  ${comment}${@}${visibility}${final}${static}${abstract}${synchronized}${type} ${name}${(}${t0} ${p0}, ${t1} ${p1}${)}${throws}${staticnl}{
-  ${body}}
-"
-	
-	
-	
-      end
-
-      operation 130306 "getName"
-	stereotype "string"
-	public explicit_return_type ""
-	nparams 0
-	
-	java_def "  ${comment}${@}${visibility}${final}${static}${abstract}${synchronized}${type} ${name}${(}${)}${throws}${staticnl}{
-  ${body}}
-"
-	
-	
-	
-      end
-
-      operation 130434 "getNationality"
-	stereotype "string"
-	public explicit_return_type ""
-	nparams 0
-	
-	java_def "  ${comment}${@}${visibility}${final}${static}${abstract}${synchronized}${type} ${name}${(}${)}${throws}${staticnl}{
-  ${body}}
-"
-	
-	
-	
-      end
-
-      operation 130562 "getLuxuryLevel"
-	stereotype "int"
-	public explicit_return_type ""
-	nparams 0
-	
-	java_def "  ${comment}${@}${visibility}${final}${static}${abstract}${synchronized}${type} ${name}${(}${)}${throws}${staticnl}{
-  ${body}}
-"
-	
-	
-	
-      end
-
-      operation 130690 "getModels"
-	stereotype "ArrayList<CarModel>"
-	public explicit_return_type ""
-	nparams 0
-	
-	java_def "  ${comment}${@}${visibility}${final}${static}${abstract}${synchronized}${type} ${name}${(}${)}${throws}${staticnl}{
-  ${body}}
-"
-	
-	
-	
-      end
-
-      operation 130818 "getDisplayInfo"
-	stereotype "String"
-	public explicit_return_type ""
-	nparams 0
-	
-	java_def "  ${comment}${@}${visibility}${final}${static}${abstract}${synchronized}${type} ${name}${(}${)}${throws}${staticnl}{
-  ${body}}
-"
-	
-	
-	
-      end
-
-      operation 130946 "validateInformation"
-	stereotype "void"
-	public explicit_return_type ""
-	nparams 3
-	  param in name "name" explicit_type "string"
-	  param in name "nationality" explicit_type "string"
-	  param in name "luxuryLevel" explicit_type "int"
-	
-	java_def "  ${comment}${@}${visibility}${final}${static}${abstract}${synchronized}${type} ${name}${(}${t0} ${p0}, ${t1} ${p1}, ${t2} ${p2}${)}${throws}${staticnl}{
-  ${body}}
-"
-	
-	
-	
-      end
-
-      operation 131074 "CarBrand"
-	stereotype "CarBrand"
-	public explicit_return_type ""
-	nparams 3
-	  param in name "name" explicit_type "string"
-	  param in name "nationality" explicit_type "string"
-	  param in name "luxuryLevel" explicit_type "int"
-	
-	java_def "  ${comment}${@}${visibility}${final}${synchronized}${name}${(}${t0} ${p0}, ${t1} ${p1}, ${t2} ${p2}${)}${throws} {
-  ${body}}
-"
-	
-	
-	
+      classrelation 128386 // <dependency>
+	relation 128386 -_->
+	  a public
+	    classrelation_ref 128386 // <dependency>
+	  b parent class_ref 128258 // CarModel
       end
     end
 
@@ -1783,6 +1797,30 @@ ${members}}
 	
 	
       end
+
+      classrelation 128002 // <realization>
+	relation 128002 -_-|>
+	  a public
+	    java "${type}"
+	    classrelation_ref 128002 // <realization>
+	  b parent class_ref 128002 // Car
+      end
+
+      classrelation 128130 // <dependency>
+	relation 128130 -_->
+	  a public
+	    classrelation_ref 128130 // <dependency>
+	  b parent class_ref 128386 // Client
+      end
+
+      classrelation 128514 // <dependency>
+	relation 128514 -_->
+	  a public
+	    classrelation_ref 128514 // <dependency>
+	  b parent class_ref 128514 // CarAllocationService
+      end
     end
   end
+
+  package_ref 128002 // src
 end

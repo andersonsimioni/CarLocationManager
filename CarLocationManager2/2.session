@@ -1,20 +1,14 @@
-window_sizes 1366 737 320 1042 589 104
+window_sizes 1366 733 175 1187 633 56
 
 diagrams
-  classdiagram_ref 128002 // Car
-    833 471 100 A4 0 0
-  classdiagram_ref 128130 // CarBrand
-    833 471 100 A4 0 0
-  classdiagram_ref 128258 // CarModel
-    833 471 100 A4 0 0
-  classdiagram_ref 128514 // CarAllocationService
-    833 471 100 A4 0 0
-  active  classdiagram_ref 128642 // AllocationOfCar
-    833 471 100 A4 0 0
+  active  classdiagram_ref 128002 // Car
+    949 506 100 A4 0 0
 end
 show_stereotypes
-selected classdiagram_ref 128642 // AllocationOfCar
+selected classdiagram_ref 128130 // CarBrand
 open
-  classview_ref 128002 // Car
+  classdiagram_ref 128130 // CarBrand
+  
+package_ref 128002 // src
 end
 end
