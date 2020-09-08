@@ -2,6 +2,51 @@ format 222
 
 classcanvas 128002 class_ref 128002 // Car
   classdiagramsettings member_max_width 0 end
-  xyzwh 53 57 2000 211 311
+  xyzwh 216 21.8 2000 210 311
+end
+classcanvas 128258 class_ref 128258 // CarModel
+  classdiagramsettings member_max_width 0 end
+  xyz 32.1 22.4 2006
+end
+classcanvas 128642 class_ref 128386 // Client
+  classdiagramsettings member_max_width 0 end
+  xyz 335.6 447.3 2012
+end
+classcanvas 128770 class_ref 128514 // CarAllocationService
+  classdiagramsettings member_max_width 0 end
+  xyz 619.2 6.8 2017
+end
+classcanvas 128898 class_ref 128642 // AllocationOfCar
+  classdiagramsettings member_max_width 0 end
+  xyz 436.1 6.3 2023
+end
+classcanvas 129922 class_ref 128130 // CarBrand
+  classdiagramsettings member_max_width 0 end
+  xyz 32 414 2000
+end
+relationcanvas 130050 relation_ref 135298 // <association>
+  from ref 129922 z 2001 to ref 128002
+  no_role_a no_role_b
+  no_multiplicity_a no_multiplicity_b
+end
+relationcanvas 130178 relation_ref 135426 // <association>
+  from ref 128002 z 2007 to ref 128258
+  no_role_a no_role_b
+  no_multiplicity_a no_multiplicity_b
+end
+relationcanvas 130434 relation_ref 135682 // <association>
+  from ref 128898 z 2024 to ref 128770
+  no_role_a no_role_b
+  no_multiplicity_a no_multiplicity_b
+end
+relationcanvas 130562 relation_ref 135810 // <association>
+  from ref 128770 z 2018 to ref 128642
+  no_role_a no_role_b
+  no_multiplicity_a no_multiplicity_b
+end
+relationcanvas 130690 relation_ref 135938 // <association>
+  from ref 128002 z 2024 to ref 128898
+  no_role_a no_role_b
+  no_multiplicity_a no_multiplicity_b
 end
 end

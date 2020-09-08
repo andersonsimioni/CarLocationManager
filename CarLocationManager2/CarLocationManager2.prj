@@ -1,6 +1,6 @@
 format 222
 "CarLocationManager2"
-  revision 2
+  revision 3
   modified_by 2 "bit"
 
 
@@ -65,7 +65,7 @@ format 222
     activitydiagramsettings
      end
     classdiagram 128002 "Car"
-      classdiagramsettings member_max_width 0 end
+      classdiagramsettings draw_all_relations no member_max_width 0 end
       size A4
     end
 
@@ -289,6 +289,18 @@ ${members}}
 	
 	
 	
+      end
+
+      classrelation 135554 // <association>
+	relation 135298 ----
+	  a role_name "" private
+	    java "  ${comment}${@}${visibility}${static}${final}${transient}${volatile}${type} ${name}${value};
+"
+	    classrelation_ref 135554 // <association>
+	  b role_name "" private
+	    java "  ${comment}${@}${visibility}${static}${final}${transient}${volatile}${type} ${name}${value};
+"
+	    classrelation_ref 135682 // <association>
       end
     end
 
@@ -590,6 +602,66 @@ ${members}}
 	    classrelation_ref 128386 // <dependency>
 	  b parent class_ref 128258 // CarModel
       end
+
+      classrelation 135042 // <association>
+	relation 135042 ----
+	  a role_name "" private
+	    java "  ${comment}${@}${visibility}${static}${final}${transient}${volatile}${type} ${name}${value};
+"
+	    classrelation_ref 135042 // <association>
+	  b role_name "" private
+	    java "  ${comment}${@}${visibility}${static}${final}${transient}${volatile}${type} ${name}${value};
+"
+	    classrelation_ref 135170 // <association>
+      end
+
+      classrelation 135170 // <association>
+	relation_ref 135042 // <association>
+      end
+
+      classrelation 135298 // <association>
+	relation 135170 ----
+	  a role_name "" private
+	    java "  ${comment}${@}${visibility}${static}${final}${transient}${volatile}${type} ${name}${value};
+"
+	    classrelation_ref 135298 // <association>
+	  b role_name "" private
+	    java "  ${comment}${@}${visibility}${static}${final}${transient}${volatile}${type} ${name}${value};
+"
+	    classrelation_ref 135426 // <association>
+      end
+
+      classrelation 135426 // <association>
+	relation_ref 135170 // <association>
+      end
+
+      classrelation 135682 // <association>
+	relation_ref 135298 // <association>
+      end
+
+      classrelation 135810 // <association>
+	relation 135426 ----
+	  a role_name "" private
+	    java "  ${comment}${@}${visibility}${static}${final}${transient}${volatile}${type} ${name}${value};
+"
+	    classrelation_ref 135810 // <association>
+	  b role_name "" private
+	    java "  ${comment}${@}${visibility}${static}${final}${transient}${volatile}${type} ${name}${value};
+"
+	    classrelation_ref 135938 // <association>
+      end
+
+      classrelation 136834 // <association>
+	relation 135938 ----
+	  a role_name "" private
+	    java "  ${comment}${@}${visibility}${static}${final}${transient}${volatile}${type} ${name}${value};
+"
+	    classrelation_ref 136834 // <association>
+	  b role_name "" private
+	    java "  ${comment}${@}${visibility}${static}${final}${transient}${volatile}${type} ${name}${value};
+"
+	    classrelation_ref 136962 // <association>
+      end
     end
 
     classdiagram 128258 "CarModel"
@@ -890,6 +962,10 @@ ${members}}
 	
 	
       end
+
+      classrelation 135938 // <association>
+	relation_ref 135426 // <association>
+      end
     end
 
     classdiagram 128386 "Client"
@@ -1111,6 +1187,22 @@ ${members}}
 	
 	
 	
+      end
+
+      classrelation 136066 // <association>
+	relation 135554 ----
+	  a role_name "" private
+	    java "  ${comment}${@}${visibility}${static}${final}${transient}${volatile}${type} ${name}${value};
+"
+	    classrelation_ref 136066 // <association>
+	  b role_name "" private
+	    java "  ${comment}${@}${visibility}${static}${final}${transient}${volatile}${type} ${name}${value};
+"
+	    classrelation_ref 136194 // <association>
+      end
+
+      classrelation 136706 // <association>
+	relation_ref 135810 // <association>
       end
     end
 
@@ -1488,6 +1580,22 @@ ${members}}
 	
 	
       end
+
+      classrelation 136450 // <association>
+	relation_ref 135682 // <association>
+      end
+
+      classrelation 136578 // <association>
+	relation 135810 ----
+	  a role_name "" private
+	    java "  ${comment}${@}${visibility}${static}${final}${transient}${volatile}${type} ${name}${value};
+"
+	    classrelation_ref 136578 // <association>
+	  b role_name "" private
+	    java "  ${comment}${@}${visibility}${static}${final}${transient}${volatile}${type} ${name}${value};
+"
+	    classrelation_ref 136706 // <association>
+      end
     end
 
     classdiagram 128642 "AllocationOfCar"
@@ -1818,6 +1926,26 @@ ${members}}
 	  a public
 	    classrelation_ref 128514 // <dependency>
 	  b parent class_ref 128514 // CarAllocationService
+      end
+
+      classrelation 136194 // <association>
+	relation_ref 135554 // <association>
+      end
+
+      classrelation 136322 // <association>
+	relation 135682 ----
+	  a role_name "" private
+	    java "  ${comment}${@}${visibility}${static}${final}${transient}${volatile}${type} ${name}${value};
+"
+	    classrelation_ref 136322 // <association>
+	  b role_name "" private
+	    java "  ${comment}${@}${visibility}${static}${final}${transient}${volatile}${type} ${name}${value};
+"
+	    classrelation_ref 136450 // <association>
+      end
+
+      classrelation 136962 // <association>
+	relation_ref 135938 // <association>
       end
     end
   end
