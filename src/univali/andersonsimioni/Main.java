@@ -10,9 +10,9 @@ public class Main {
         //univali.andersonsimioni.UnitTest.CarModelTest.testAllFunctions();
 
         /* execute system tests */
-        //univali.andersonsimioni.SystemTest.UseSimulation.run();
+        //univali.andersonsimioni.UnitTest.CarAllocationServiceTest.testAllFunctions();
 
         /*All tests*/
-        univali.andersonsimioni.UnitTest.CarAllocationServiceTest.testAllFunctions();
+        univali.andersonsimioni.SystemTest.UseSimulation.execute();
     }
 }
