@@ -1,0 +1,7 @@
+format 222
+
+classcanvas 128002 class_ref 128002 // Car
+  classdiagramsettings member_max_width 0 end
+  xyzwh 53 57 2000 211 311
+end
+end

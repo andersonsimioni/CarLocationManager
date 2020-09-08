@@ -1,0 +1,7 @@
+format 222
+
+classcanvas 128002 class_ref 128386 // Client
+  classdiagramsettings member_max_width 0 end
+  xyzwh 92 40 2000 383 331
+end
+end

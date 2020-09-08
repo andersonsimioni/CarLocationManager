@@ -1,0 +1,7 @@
+format 222
+
+classcanvas 128002 class_ref 128642 // AllocationOfCar
+  classdiagramsettings member_max_width 0 end
+  xyzwh 147 132 2000 425 371
+end
+end
