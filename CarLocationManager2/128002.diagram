@@ -2,39 +2,46 @@ format 222
 
 classcanvas 128002 class_ref 128002 // Car
   classdiagramsettings member_max_width 0 end
-  xyzwh 216 21.8 2000 210 311
+  xyzwh 263.12 591.36 2000 210 371
 end
 classcanvas 128258 class_ref 128258 // CarModel
   classdiagramsettings member_max_width 0 end
-  xyz 32.1 22.4 2006
+  xyz 28.24 1009.76 2006
 end
 classcanvas 128642 class_ref 128386 // Client
   classdiagramsettings member_max_width 0 end
-  xyz 335.6 447.3 2012
+  xyz 821.96 607.4 2012
 end
 classcanvas 128770 class_ref 128514 // CarAllocationService
   classdiagramsettings member_max_width 0 end
-  xyz 619.2 6.8 2017
+  xyz 785.24 5.56 2017
 end
 classcanvas 128898 class_ref 128642 // AllocationOfCar
   classdiagramsettings member_max_width 0 end
-  xyz 436.1 6.3 2023
+  xyz 283.24 78.96 2023
 end
 classcanvas 129922 class_ref 128130 // CarBrand
   classdiagramsettings member_max_width 0 end
-  xyz 32 414 2000
+  xyz 42.28 623.88 2000
+end
+relationcanvas 128123 relation_ref 128123 // <association>
+  from ref 128258 z 2007 to ref 129922
+  no_role_a no_role_b
+  no_multiplicity_a no_multiplicity_b
+end
+relationcanvas 129147 relation_ref 128379 // <association>
+  from ref 128898 z 2024 to ref 128642
+  no_role_a no_role_b
+  no_multiplicity_a no_multiplicity_b
 end
 relationcanvas 130050 relation_ref 135298 // <association>
+  decenter_begin 510
   from ref 129922 z 2001 to ref 128002
   no_role_a no_role_b
   no_multiplicity_a no_multiplicity_b
 end
-relationcanvas 130178 relation_ref 135426 // <association>
-  from ref 128002 z 2007 to ref 128258
-  no_role_a no_role_b
-  no_multiplicity_a no_multiplicity_b
-end
 relationcanvas 130434 relation_ref 135682 // <association>
+  decenter_begin 492
   from ref 128898 z 2024 to ref 128770
   no_role_a no_role_b
   no_multiplicity_a no_multiplicity_b
@@ -45,6 +52,7 @@ relationcanvas 130562 relation_ref 135810 // <association>
   no_multiplicity_a no_multiplicity_b
 end
 relationcanvas 130690 relation_ref 135938 // <association>
+  decenter_end 521
   from ref 128002 z 2024 to ref 128898
   no_role_a no_role_b
   no_multiplicity_a no_multiplicity_b

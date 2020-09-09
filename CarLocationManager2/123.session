@@ -1,0 +1,11 @@
+window_sizes 1920 1013 450 1464 893 66
+
+diagrams
+  active  classdiagram_ref 128002 // Car
+    1464 893 68 B 0 0
+end
+show_stereotypes
+selected classview_ref 128002 // Car
+open
+end
+end

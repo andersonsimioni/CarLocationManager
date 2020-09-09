@@ -10,7 +10,7 @@ public class CarAllocationService {
     private final ArrayList<Client> Clients;
     private final ArrayList<CarBrand> WorldCars;
     private final ArrayList<Car> FleetOfCars;
-    private final ArrayList<AllocationOfCar> ALlocations;
+    private final ArrayList<AllocationOfCar> Allocations;
     //endregion
 
     /**
@@ -70,7 +70,7 @@ public class CarAllocationService {
         if(car == null)
             throw new IllegalArgumentException("car is null");
 
-        for(AllocationOfCar allocation:ALlocations)
+        for(AllocationOfCar allocation: Allocations)
             if(allocation.getCar().getRenavam().equals(car.getRenavam()) &&
                allocation.getCar().getChassis().equals(car.getChassis()) &&
                allocation.getCar().getBoard().equals(car.getBoard()) &&
@@ -183,7 +183,7 @@ public class CarAllocationService {
         if(client == null)
             throw new IllegalArgumentException("invalid client, client is null");
 
-        for(AllocationOfCar allocation:ALlocations)
+        for(AllocationOfCar allocation: Allocations)
             if(allocation.isReturned() == false)
                 if(allocation.getClient().getCpf().equals(client.getCpf()))
                     return true;
@@ -201,7 +201,7 @@ public class CarAllocationService {
         if(clientCpf == null || clientCpf.isEmpty())
             throw new IllegalArgumentException("invalid client cpf");
 
-        for(AllocationOfCar allocation:ALlocations)
+        for(AllocationOfCar allocation: Allocations)
             if(allocation.isReturned() == false)
                 if(allocation.getClient().getCpf().equals(clientCpf))
                     return allocation;
@@ -319,7 +319,7 @@ public class CarAllocationService {
             if(deposit <= minimumDeposit)
                 throw new IllegalArgumentException("fail to register allocation, minimum deposit is: U$" + minimumDeposit);
 
-            ALlocations.add(newAllocation);
+            Allocations.add(newAllocation);
         }catch (IllegalArgumentException ex){
             throw ex;
         }
@@ -361,6 +361,6 @@ public class CarAllocationService {
         this.Clients = new ArrayList<Client>();
         this.WorldCars = new ArrayList<CarBrand>();
         this.FleetOfCars = new ArrayList<Car>();
-        this.ALlocations = new ArrayList<AllocationOfCar>();
+        this.Allocations = new ArrayList<AllocationOfCar>();
     }
 }

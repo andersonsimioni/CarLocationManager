@@ -1,7 +1,7 @@
 format 222
 "CarLocationManager2"
-  revision 3
-  modified_by 2 "bit"
+  revision 4
+  modified_by 123 "DEBUG"
 
 
   
@@ -66,7 +66,7 @@ format 222
      end
     classdiagram 128002 "Car"
       classdiagramsettings draw_all_relations no member_max_width 0 end
-      size A4
+      size B
     end
 
     class 128130 "CarBrand"
@@ -301,6 +301,10 @@ ${members}}
 	    java "  ${comment}${@}${visibility}${static}${final}${transient}${volatile}${type} ${name}${value};
 "
 	    classrelation_ref 135682 // <association>
+      end
+
+      classrelation 128251 // <association>
+	relation_ref 128123 // <association>
       end
     end
 
@@ -662,6 +666,22 @@ ${members}}
 "
 	    classrelation_ref 136962 // <association>
       end
+
+      classrelation 128379 // <association>
+	relation 128251 ----
+	  a role_name "" private
+	    java "  ${comment}${@}${visibility}${static}${final}${transient}${volatile}${type} ${name}${value};
+"
+	    classrelation_ref 128379 // <association>
+	  b role_name "" private
+	    java "  ${comment}${@}${visibility}${static}${final}${transient}${volatile}${type} ${name}${value};
+"
+	    classrelation_ref 128507 // <association>
+      end
+
+      classrelation 128507 // <association>
+	relation_ref 128251 // <association>
+      end
     end
 
     classdiagram 128258 "CarModel"
@@ -966,6 +986,18 @@ ${members}}
       classrelation 135938 // <association>
 	relation_ref 135426 // <association>
       end
+
+      classrelation 128123 // <association>
+	relation 128123 ----
+	  a role_name "" private
+	    java "  ${comment}${@}${visibility}${static}${final}${transient}${volatile}${type} ${name}${value};
+"
+	    classrelation_ref 128123 // <association>
+	  b role_name "" private
+	    java "  ${comment}${@}${visibility}${static}${final}${transient}${volatile}${type} ${name}${value};
+"
+	    classrelation_ref 128251 // <association>
+      end
     end
 
     classdiagram 128386 "Client"
@@ -1203,6 +1235,10 @@ ${members}}
 
       classrelation 136706 // <association>
 	relation_ref 135810 // <association>
+      end
+
+      classrelation 128763 // <association>
+	relation_ref 128379 // <association>
       end
     end
 
@@ -1946,6 +1982,18 @@ ${members}}
 
       classrelation 136962 // <association>
 	relation_ref 135938 // <association>
+      end
+
+      classrelation 128635 // <association>
+	relation 128379 ----
+	  a role_name "" private
+	    java "  ${comment}${@}${visibility}${static}${final}${transient}${volatile}${type} ${name}${value};
+"
+	    classrelation_ref 128635 // <association>
+	  b role_name "" private
+	    java "  ${comment}${@}${visibility}${static}${final}${transient}${volatile}${type} ${name}${value};
+"
+	    classrelation_ref 128763 // <association>
       end
     end
   end
